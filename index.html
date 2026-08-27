@@ -209,35 +209,5 @@
 
   <footer>© 2026 Soultee * Eien Music *</footer>
 
-  <!-- Script para forzar la apertura de aplicaciones en celulares -->
-  <script>
-    document.querySelectorAll('.link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        if (!isMobile) return; // Si es PC, se comporta normal
-
-        let href = this.getAttribute('href');
-
-        // Si es de YouTube, transformamos el link web en un esquema de app de YouTube (intentará abrir la app)
-        if (this.classList.contains('youtube')) {
-          e.preventDefault();
-          // Intentar abrir la app nativa de YouTube, de lo contrario abre la web tras 1 segundo
-          window.location.href = href.replace("https://www.youtube.com/", "vnd.youtube://");
-          setTimeout(() => {
-            window.location.href = href;
-          }, 1000);
-        }
-        
-        // Si es de Spotify
-        else if (this.classList.contains('spotify')) {
-          e.preventDefault();
-          window.location.href = "spotify:artist:0N8riDbUBr9gcw00PSNKKi";
-          setTimeout(() => {
-            window.location.href = href;
-          }, 1000);
-        }
-      });
-    });
-  </script>
 </body>
 </html>
